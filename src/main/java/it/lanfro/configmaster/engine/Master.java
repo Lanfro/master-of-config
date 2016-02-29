@@ -19,6 +19,7 @@ public final class Master {
 	private static final String TEMPLATE_FOLDER = "src/main/java/it/lanfro/configmaster/ftl";
 	private static final File OUTPUT = new File("src/main/java/it/seat/youtube/wrapper/config");
 	private static final File RESOURCES_DIR = new File("src/main/resources");
+	private static final String NOT_ALLOWED = "${";
 	
 	private Master(){
 		//empty
@@ -37,8 +38,7 @@ public final class Master {
 				break;
 			default:
 				break;
-			}
-			
+			} 
 		}
 		return null;
 	}
@@ -64,7 +64,15 @@ public final class Master {
 		}
         
         for(Object key : properties.keySet()){
-        	fieldSet.add(new Field((String)key, (String)properties.get(key)));
+        	
+        	String keyString = (String) key;
+        	String valString = (String) properties.getProperty(keyString);
+        	
+        	if((valString).contains(NOT_ALLOWED)){
+        		valString = "";
+        	} 
+        	
+        	fieldSet.add(new Field(keyString, valString));
         }
         
 		return new PropertyDataModel(fieldSet);

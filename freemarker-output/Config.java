@@ -1,4 +1,4 @@
-public Interface Config {
+public interface Config {
 
 		    String getMAX_DESCRIPTION_BYTES_NUMBER();
 	    

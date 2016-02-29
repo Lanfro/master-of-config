@@ -10,78 +10,78 @@ public class ConfigImpl implements Config{
 	    
 	    private final static String default_JETTY_WEB_PORT_GET_ENV 	= "PORT";
 	    
-	    private final static String default_EMAIL_SUBJECT 	= "[${project.artifactId} - ${env}] - YOUTUBE Video";
+	    private final static String default_EMAIL_SUBJECT 	= "";
 	    
 	    private final static String default_YOUTUBE_ALLOWED_EXTENSIONS 	= "MOV,MPEG4,MP4,AVI,WMV,MPEGPS,FLV,3GPP,WebM,MPG";
 	    
 	    private final static String default_PG_VIDEO_BASE_URL 	= "http://video.paginegialle.it";
 	    
-	    private final static String default_YOUTUBE_CLIENT_SECRET 	= "${youtube.client.secret}";
+	    private final static String default_YOUTUBE_CLIENT_SECRET 	= "";
 	    
 	    private final static String default_JETTY_CONTEXT_PATH 	= "/";
 	    
 	    private final static String default_MAX_TITLE_CHARS_NUMBER 	= "100";
 	    
-	    private final static String default_PROXY_HOST 	= "${proxy.host}";
+	    private final static String default_PROXY_HOST 	= "";
 	    
 	    private final static String default_EMAIL_HOST 	= "hermes.paginegialle.it";
 	    
 	    private final static String default_MAX_TAGS_CHARS_NUMBER 	= "500";
 	    
-	    private final static String default_YOUTUBE_CLIENT_ID 	= "${youtube.client.id}";
+	    private final static String default_YOUTUBE_CLIENT_ID 	= "";
 	    
 	    private final static String default_JETTY_WEB_PORT 	= "8083";
 	    
 	    private final static String default_JETTY_WEBAPP_DIR_LOCATION 	= "src/main/webapp/";
 	    
-	    private final static String default_PROXY_PORT 	= "${proxy.port}";
+	    private final static String default_PROXY_PORT 	= "";
 	    
 	    private final static String default_EMAIL_FROM 	= "script@seat.it";
 	    
 	    private final static String default_JETTY_DESCRIPTOR_PATH 	= "/WEB-INF/web.xml";
 	    
-	    private final static String default_EMAIL_TO 	= "${email.to}";
+	    private final static String default_EMAIL_TO 	= "";
 	    
-	    private final static String default_YOUTUBE_REFRESH_TOKEN 	= "${youtube.refresh.token}";
+	    private final static String default_YOUTUBE_REFRESH_TOKEN 	= "";
 	    
 	
-	    private final static String MAX_DESCRIPTION_BYTES_NUMBER;
+	    private static String MAX_DESCRIPTION_BYTES_NUMBER;
 	    
-	    private final static String JETTY_WEB_PORT_GET_ENV;
+	    private static String JETTY_WEB_PORT_GET_ENV;
 	    
-	    private final static String EMAIL_SUBJECT;
+	    private static String EMAIL_SUBJECT;
 	    
-	    private final static String YOUTUBE_ALLOWED_EXTENSIONS;
+	    private static String YOUTUBE_ALLOWED_EXTENSIONS;
 	    
-	    private final static String PG_VIDEO_BASE_URL;
+	    private static String PG_VIDEO_BASE_URL;
 	    
-	    private final static String YOUTUBE_CLIENT_SECRET;
+	    private static String YOUTUBE_CLIENT_SECRET;
 	    
-	    private final static String JETTY_CONTEXT_PATH;
+	    private static String JETTY_CONTEXT_PATH;
 	    
-	    private final static String MAX_TITLE_CHARS_NUMBER;
+	    private static String MAX_TITLE_CHARS_NUMBER;
 	    
-	    private final static String PROXY_HOST;
+	    private static String PROXY_HOST;
 	    
-	    private final static String EMAIL_HOST;
+	    private static String EMAIL_HOST;
 	    
-	    private final static String MAX_TAGS_CHARS_NUMBER;
+	    private static String MAX_TAGS_CHARS_NUMBER;
 	    
-	    private final static String YOUTUBE_CLIENT_ID;
+	    private static String YOUTUBE_CLIENT_ID;
 	    
-	    private final static String JETTY_WEB_PORT;
+	    private static String JETTY_WEB_PORT;
 	    
-	    private final static String JETTY_WEBAPP_DIR_LOCATION;
+	    private static String JETTY_WEBAPP_DIR_LOCATION;
 	    
-	    private final static String PROXY_PORT;
+	    private static String PROXY_PORT;
 	    
-	    private final static String EMAIL_FROM;
+	    private static String EMAIL_FROM;
 	    
-	    private final static String JETTY_DESCRIPTOR_PATH;
+	    private static String JETTY_DESCRIPTOR_PATH;
 	    
-	    private final static String EMAIL_TO;
+	    private static String EMAIL_TO;
 	    
-	    private final static String YOUTUBE_REFRESH_TOKEN;
+	    private static String YOUTUBE_REFRESH_TOKEN;
 	    
 		
 	public static class ConfigBuilder {
