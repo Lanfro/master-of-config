@@ -12,7 +12,7 @@ public class ConfigImpl implements Config{
 	</#list>
 	
 	<#list fieldSet as item>
-	    private final static String ${item.name};
+	    private static String ${item.name};
 	    
 	</#list>
 		
