@@ -1,2 +1,2 @@
 # master-of-config
-Velocity based project generating code for configuration
+Freemarker based project generating code for configurations in a Java Project
