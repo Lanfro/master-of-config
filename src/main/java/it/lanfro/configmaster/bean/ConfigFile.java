@@ -10,3 +10,4 @@ public class ConfigFile {
 	private Collection<Field> fields;  
 	
 }
+ 

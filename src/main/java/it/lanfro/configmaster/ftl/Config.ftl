@@ -1,7 +1,7 @@
 public interface Config {
 
 	<#list fieldSet as item>
-	    String get${item.name}();
+	    ${item.type} get${item.name}();
 	    
 	</#list>
 }

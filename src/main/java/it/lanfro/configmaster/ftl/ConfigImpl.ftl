@@ -7,18 +7,23 @@ public class ConfigImpl implements Config{
 	final static Logger logger = Logger.getLogger(ConfigImpl.class);
 	
 	<#list fieldSet as item>
-	    private final static String default_${item.name} 	= "${item.value}";
+		
+		<#if item.type="String">
+			private final static ${item.type} default_${item.name} 	= "${item.value}";
+		<#else>
+		  	private final static ${item.type} default_${item.name} 	= ${item.value};
+		</#if>
 	    
 	</#list>
 	
 	<#list fieldSet as item>
-	    private static String ${item.name};
+	    private static ${item.type} ${item.name};
 	    
 	</#list>
 		
 	public static class ConfigBuilder {
 		<#list fieldSet as item>
-	   	private String ${item.name};
+	   	private ${item.type} ${item.name};
 	    </#list>
 				
 		ConfigBuilder(){
@@ -26,14 +31,14 @@ public class ConfigImpl implements Config{
 		}
 		
 		<#list fieldSet as item>
-	   	ConfigBuilder ${item.name}(String val){
-			${item.name} = assignStringValue(val, default_${item.name});
+	   	ConfigBuilder ${item.name}(${item.type} val){
+			${item.name} = assignValue(val, default_${item.name});
 			logger.debug("${item.name}:"+${item.name});
 			return this;
 		}
 	    </#list>
 		
-		private String assignStringValue(String val, String defaultValue){
+		private String assignValue(String val, String defaultValue){
 			String newVal;
 			if(val == null){
 				newVal = defaultValue;
@@ -43,8 +48,17 @@ public class ConfigImpl implements Config{
 			return newVal;
 		}
 		
-		/*
-		private Integer assignIntegerValue(Integer val, Integer defaultValue){
+		private Double assignValue(Double val, Double defaultValue){
+			Double newVal;
+			if(val == null){
+				newVal = defaultValue;
+			} else {
+				newVal = val;
+			}
+			return newVal;
+		}
+		
+		private Integer assignValue(Integer val, Integer defaultValue){
 			Integer newVal;
 			if(val == null){
 				newVal = defaultValue;
@@ -53,8 +67,7 @@ public class ConfigImpl implements Config{
 			}
 			return newVal;
 		}
-		*/
-		
+				
 		ConfigImpl build(){
 			return new ConfigImpl(this);
 		}
@@ -70,7 +83,7 @@ public class ConfigImpl implements Config{
 
 	<#list fieldSet as item>
 	@Override
-	public String get${item.name}() {
+	public ${item.type} get${item.name}() {
 		return ${item.name};
 	}
 	</#list>	

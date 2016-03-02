@@ -12,18 +12,25 @@ import it.lanfro.configmaster.model.PropertyDataModel;
 
 final class TemplateManager {
 
-	private static Configuration conf;
-	private static final String[] templates = new String[]{"Config.ftl","ConfigImpl.ftl","ConfigFactory.ftl"};
+	private static final String FTL_EXTENSION = ".ftl";
+	private static final String OUTPUT_EXTENSION = ".java";
+	private static final String DEFAULT_ENCODING = "UTF-8";
+	private static final String FREEMARKER_OUTPUT_DIR = "freemarker-output/";
+	
+	private static final String[] TEMPLATES = new String[]{"Config.ftl","ConfigImpl.ftl","ConfigFactory.ftl"};
 
+	private static Configuration conf;
+	
+	
 	static void createFiles(PropertyDataModel dataModel, String templateFolder) {
 		conf = loadConfiguration(templateFolder);
-		for(String template : templates){
+		for(String template : TEMPLATES){
 			try {
-				String javaFileName = template.replace(".ftl", ".java");
-				conf.getTemplate(template).process(dataModel, new FileWriter(new File("freemarker-output/"+javaFileName)) );
+				String javaFileName = template.replace(FTL_EXTENSION, OUTPUT_EXTENSION);
+				conf.getTemplate(template).process(dataModel, new FileWriter(new File(FREEMARKER_OUTPUT_DIR+javaFileName)) );
 			} catch (TemplateException | IOException e) {
 				e.printStackTrace();
-			}
+			} 
 		}
 	}
 
@@ -36,7 +43,7 @@ final class TemplateManager {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-	        conf.setDefaultEncoding("UTF-8");
+	        conf.setDefaultEncoding(DEFAULT_ENCODING);
 	        conf.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 		}
 		

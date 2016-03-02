@@ -17,7 +17,7 @@ public class FilenameUtils {
 	    } else {
 	        return filename.substring(index + 1);
 	    }
-	}
+	} 
 	
 	public static int indexOfExtension(final String filename) {
 	    if (filename == null) {

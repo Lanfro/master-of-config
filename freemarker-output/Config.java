@@ -1,41 +1,51 @@
 public interface Config {
 
-		    String getMAX_DESCRIPTION_BYTES_NUMBER();
+		    String getEMAIL_SUBJECT();
 	    
-	    String getJETTY_WEB_PORT_GET_ENV();
-	    
-	    String getEMAIL_SUBJECT();
-	    
-	    String getYOUTUBE_ALLOWED_EXTENSIONS();
-	    
-	    String getPG_VIDEO_BASE_URL();
-	    
-	    String getYOUTUBE_CLIENT_SECRET();
-	    
-	    String getJETTY_CONTEXT_PATH();
-	    
-	    String getMAX_TITLE_CHARS_NUMBER();
-	    
-	    String getPROXY_HOST();
+	    Integer getMAX_DESCRIPTION_BYTES_NUMBER();
 	    
 	    String getEMAIL_HOST();
 	    
-	    String getMAX_TAGS_CHARS_NUMBER();
+	    Integer getMAX_UPLOAD_SIZE_SLEEP_MILLIS();
 	    
-	    String getYOUTUBE_CLIENT_ID();
+	    String getPG_VIDEO_BASE_URL();
 	    
-	    String getJETTY_WEB_PORT();
+	    String getJNDI_YOUTUBE_WRAPPER();
+	    
+	    String getYOUTUBE_APPLICATION_NAME();
+	    
+	    String getYOUTUBE_CREDENTIAL_DATA_STORE();
+	    
+	    String getYOUTUBE_REFRESH_TOKEN();
+	    
+	    Integer getPROXY_PORT();
 	    
 	    String getJETTY_WEBAPP_DIR_LOCATION();
 	    
-	    String getPROXY_PORT();
+	    Integer getJETTY_WEB_PORT();
 	    
 	    String getEMAIL_FROM();
 	    
-	    String getJETTY_DESCRIPTOR_PATH();
+	    String getYOUTUBE_ALLOWED_EXTENSIONS();
+	    
+	    Integer getMAX_TITLE_CHARS_NUMBER();
+	    
+	    String getYOUTUBE_CLIENT_ID();
 	    
 	    String getEMAIL_TO();
 	    
-	    String getYOUTUBE_REFRESH_TOKEN();
+	    Integer getMAX_GET_UPLOAD_SIZE_RETRY_ATTEMPS();
+	    
+	    Integer getMAX_TAGS_CHARS_NUMBER();
+	    
+	    String getJETTY_CONTEXT_PATH();
+	    
+	    String getYOUTUBE_CLIENT_SECRET();
+	    
+	    String getJETTY_DESCRIPTOR_PATH();
+	    
+	    String getJETTY_WEB_PORT_GET_ENV();
+	    
+	    String getPROXY_HOST();
 	    
 }

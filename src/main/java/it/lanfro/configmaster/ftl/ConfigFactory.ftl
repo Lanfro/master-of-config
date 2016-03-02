@@ -27,7 +27,15 @@ public class ConfigFactory {
 			}
 	    	
 	    	<#list fieldSet as item>
-	    	String ${item.name} 	= configProp.getProperty("${item.name}"	);
+	    	
+	    	<#if item.type="String">
+				${item.type} ${item.name} 	= configProp.getProperty("${item.name}"	);
+			<#elseif item.type="Integer">
+				${item.type} ${item.name} 	= Integer.parseInt(configProp.getProperty("${item.name}"	));
+			<#else>
+			  	${item.type} ${item.name} 	= Double.parseDouble(configProp.getProperty("${item.name}"	));
+			</#if>
+	    	
 	    	</#list>
 	    	
 			config = new ConfigBuilder().

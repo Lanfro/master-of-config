@@ -15,13 +15,17 @@ import it.lanfro.configmaster.type.Extension;
 import it.lanfro.configmaster.util.FilenameUtils;
 
 public final class Master {
-
-	private static final String TEMPLATE_FOLDER = "src/main/java/it/lanfro/configmaster/ftl";
-	private static final File OUTPUT = new File("src/main/java/it/seat/youtube/wrapper/config");
+ 
+	private static final File OUTPUT = new File("freemarker-output");
 	private static final File RESOURCES_DIR = new File("src/main/resources");
-	private static final String NOT_ALLOWED = "${";
 	
-	private Master(){
+	private static final String TEMPLATE_FOLDER = "src/main/java/it/lanfro/configmaster/ftl";
+	private static final String NOT_ALLOWED = "${";
+	private static final String DOUBLE = "Double";
+	private static final String INTEGER = "Integer";
+	private static final String STRING = "String";
+	
+	private Master(){ 
 		//empty
 	}
 
@@ -40,7 +44,7 @@ public final class Master {
 				break;
 			} 
 		}
-		return null;
+		return paths;
 	}
 
 	private static String[] generateFiles(PropertyDataModel dataModel) {
@@ -48,7 +52,7 @@ public final class Master {
 		return OUTPUT.list();
 	}
 
-	private static PropertyDataModel fromProperties(String path) {
+	private static  PropertyDataModel fromProperties(String path) {
 		
 		Set<Field> fieldSet = new HashSet<>();
 		
@@ -68,14 +72,55 @@ public final class Master {
         	String keyString = (String) key;
         	String valString = (String) properties.getProperty(keyString);
         	
-        	if((valString).contains(NOT_ALLOWED)){
-        		valString = "";
-        	} 
+        	valString = checkValue(valString);
         	
-        	fieldSet.add(new Field(keyString, valString));
+        	String typeString = typeFromString(valString);
+        	
+        	fieldSet.add(new Field(keyString, valString, typeString));
         }
         
 		return new PropertyDataModel(fieldSet);
+	}
+
+	private static String checkValue(String valString){
+		if(valString.contains(NOT_ALLOWED)){
+			valString = "";
+		}
+		return valString;
+	}
+	
+	private static String typeFromString(String valString) {
+		
+		String typeString = null;
+		
+		boolean isDouble = true;
+		boolean isInteger = true;
+				
+
+		
+		try {
+	        Integer.parseInt(valString);
+		}
+	    catch( Exception e ) {
+	    	isInteger = false;
+	    }
+		
+		try {
+			Double.parseDouble(valString);
+		}
+	    catch( Exception e ) {
+	    	isDouble = false;
+	    }
+		 
+		if(isInteger){
+			typeString = INTEGER;
+		} else if(isDouble){
+			typeString = DOUBLE;
+		} else {
+			typeString = STRING;
+		}
+		
+		return typeString;
 	}
 	
 }
