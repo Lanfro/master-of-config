@@ -21,6 +21,7 @@ public final class Master {
 	
 	private static final String TEMPLATE_FOLDER = "src/main/java/it/lanfro/configmaster/ftl";
 	private static final String NOT_ALLOWED = "${";
+	private static final String DOT = ".";
 	private static final String DOUBLE = "Double";
 	private static final String INTEGER = "Integer";
 	private static final String STRING = "String";
@@ -72,6 +73,7 @@ public final class Master {
         	String keyString = (String) key;
         	String valString = (String) properties.getProperty(keyString);
         	
+        	keyString = checkKey(keyString);
         	valString = checkValue(valString);
         	
         	String typeString = typeFromString(valString);
@@ -80,6 +82,13 @@ public final class Master {
         }
         
 		return new PropertyDataModel(fieldSet);
+	}
+
+	private static String checkKey(String keyString) {
+		if(keyString.contains(DOT)){
+			keyString = keyString.replaceAll("\\.", "_");
+		}
+		return keyString;
 	}
 
 	private static String checkValue(String valString){
