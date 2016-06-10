@@ -73,12 +73,13 @@ public final class Master {
         	String keyString = (String) key;
         	String valString = (String) properties.getProperty(keyString);
         	
-        	keyString = checkKey(keyString);
+//        	keyString = checkKey(keyString);
+        	String nameString = checkKey(keyString);
         	valString = checkValue(valString);
         	
         	String typeString = typeFromString(valString);
         	
-        	fieldSet.add(new Field(keyString, valString, typeString));
+        	fieldSet.add(new Field(keyString, nameString, valString, typeString));
         }
         
 		return new PropertyDataModel(fieldSet);
